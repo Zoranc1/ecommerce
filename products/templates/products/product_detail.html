@@ -4,18 +4,20 @@
     <div class="container-fluid">
     <div class="row">
     
-                    <div class="col-sm-4 ">
+                    <div class="col-sm-6 col-sm-offset-3 ">
                         <div class="thumbnail">
-                            <img src="{{MEDIA_URL}}{{product.image}}" alt="">
+                            <img class='img_detial' src="{{MEDIA_URL}}{{product.image}}" alt="">
                             <div class="caption">
                                 <h4 class="pull-right">€{{product.price}}</h4>
                                 <h4>{{product.name}}</h4>
-                                <h4>{{product.sku}}</h4>
-                                <p>{{product.brand}}</p>
-                                <p>{{product.stock}}</p>
-                                <p>{{product.description}}</p>
+                                <h4>SKU :{{product.sku}}</h4>
+                                <p>BREND :{{product.brand}}</p>
+                                <p>STOK : {{product.stock}}</p>
+                                <p>About the product: {{product.description}}</p>
                                 
-                                <form method="POST" action="#">
+                                <form method="POST" action="{% url 'adding_to_cart'%}">
+                                    {% csrf_token %}
+                                     <input type="hidden" name="product" value="{{product.id}}"/>
                                     <input type="number" name="quantity" value="1"/>
                                     <input class="btn btn-primary" type="submit" value="Add to cart"/>
                                 </form>

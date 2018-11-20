@@ -18,6 +18,12 @@ footer {
 .accountform {
     padding-top: 20px;
 }
-.image{
-    max-width: 130px;
+.img{
+    width: 150px;
+}
+.img_detial{
+    width: 280px;
+}
+.img:hover{
+    
 }
