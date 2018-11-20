@@ -3,15 +3,17 @@
 {% block content %}
     <div class="container-fluid">
     <div class="row">
-    {% for product in products %}
+    
                     <div class="col-sm-4 ">
                         <div class="thumbnail">
                             <img src="{{MEDIA_URL}}{{product.image}}" alt="">
                             <div class="caption">
                                 <h4 class="pull-right">€{{product.price}}</h4>
-                                <h4><a href="{% url 'products_detail' product.id %}">{{product.name}}</a>
-                                </h4>
+                                <h4>{{product.name}}</h4>
+                                <h4>{{product.sku}}</h4>
                                 <p>{{product.brand}}</p>
+                                <p>{{product.stock}}</p>
+                                <p>{{product.description}}</p>
                                 
                                 <form method="POST" action="#">
                                     <input type="number" name="quantity" value="1"/>
@@ -21,8 +23,7 @@
                             </div>
                         </div>
                     </div>
-    {% endfor %}
+   
     </div>
     </div>
-    
-{% endblock content %}
+ {% endblock content %}   
