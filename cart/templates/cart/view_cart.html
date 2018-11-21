@@ -2,6 +2,8 @@
 
 {% block content %}
 
+{% if items_in_cart > 0 %}
+
 <table class="table">
     <thead>
         <tr>
@@ -22,7 +24,7 @@
             <td>{{ item.quantity }}</td>    
             <td>€{{ item.price }}</td>
             <td>€{{ item.total }}</td>
-            <td><form method="post" action="#">
+            <td><form method="post" action="{% url 'remove_from_cart' item.id %}">
                 {% csrf_token %}
                 <input type="submit" class="btn btn-success" value="Remove"/>
                 </form>
@@ -30,22 +32,21 @@
         </tr>
         {% endfor %}
 
-
-
-
-
-
         <tr>
             <td></td>
             <td></td>
             <td></td>
             <td><strong>Total:</strong></td>
-            <td><strong>€300</strong></td>
+            <td><strong>{{ cartTotal }}</strong></td>
             <td></td>
         </tr>
     </tbody>
 </table>
 
 <a href="#" class="btn btn-success" role="button">Checkout</a>
+
+{% else %}
+<h1>There is nothing in Your Shoping Cart</h1>
+{%endif%}
 
 {% endblock %}
