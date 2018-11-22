@@ -48,11 +48,5 @@ def view_cart(request):
         })  
         cartTotal+=item_total
         
-        
-        
-        
-          
-        
-        
-        
+
     return render(request, "cart/view_cart.html", {'cart_items': cart_items,'cartTotal': cartTotal} )

@@ -3,7 +3,6 @@
 {% block content %}
 
 {% if items_in_cart > 0 %}
-
 <table class="table">
     <thead>
         <tr>
@@ -17,36 +16,39 @@
     </thead>
     <tbody>
         
-        {% for item in cart_items %}
+        
+       {% for item in cart_items %}
+       
         <tr>
             <td><img width="150" height="75" src="{{ MEDIA_URL }}{{ item.image}}"/></td>    
             <td>{{ item.name }}</td>    
             <td>{{ item.quantity }}</td>    
             <td>€{{ item.price }}</td>
             <td>€{{ item.total }}</td>
-            <td><form method="post" action="{% url 'remove_from_cart' item.id %}">
+            <td><form method="post" action="{%url 'remove_from_cart' item.id %}">
                 {% csrf_token %}
                 <input type="submit" class="btn btn-success" value="Remove"/>
                 </form>
             </td>
         </tr>
         {% endfor %}
-
         <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td><strong>Total:</strong></td>
-            <td><strong>{{ cartTotal }}</strong></td>
-            <td></td>
-        </tr>
+           <td></td>
+           <td></td>
+           <td></td>
+           <td><strong>Total:</strong></td>
+           <td><strong>{{cartTotal}}</strong></td>
+           <td></td>
+       </tr>
     </tbody>
 </table>
 
-<a href="#" class="btn btn-success" role="button">Checkout</a>
-
+<a href="{% url 'show_checkout'%}" class="btn btn-success" role="button">Checkout</a>
 {% else %}
-<h1>There is nothing in Your Shoping Cart</h1>
-{%endif%}
+
+<p>Your Cart is empty</p>
+
+{% endif %}
+
 
 {% endblock %}
