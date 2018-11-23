@@ -19,6 +19,7 @@ from accounts.views import signup, show_profile
 from products.views import products_list, products_detail
 from checkout import urls as checkout_urls
 from cart import urls as cart_urls
+from reviews import urls as review_urls
 from django.conf import settings
 from django.views.static import serve
 
@@ -28,6 +29,7 @@ urlpatterns = [
     path('accounts/', include('django.contrib.auth.urls')),
     path('signup/', signup, name='signup'),
     path('cart/', include(cart_urls)),
+    path('review/', include(review_urls)),
    
     path('checkout/', include(checkout_urls)),
     
